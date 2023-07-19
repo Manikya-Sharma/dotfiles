@@ -35,6 +35,7 @@ Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'voldikss/vim-floaterm'
+Plug 'liuchengxu/space-vim-dark'
 call plug#end()
 
 noremap <C-b> :NERDTreeFocus<CR>
@@ -43,7 +44,13 @@ noremap <C-b> :NERDTreeToggle<CR>
 noremap <C-a> :FloatermNew<CR>
 
 
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme space-vim-dark
+hi Comment cterm=italic
+hi Normal     ctermbg=NONE guibg=NONE
+hi LineNr     ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE
+hi Comment guifg=#5C6370 ctermfg=59
 
 lua << END
 require('lualine').setup{
