@@ -35,7 +35,7 @@ Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/space-vim-dark'
-Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.5.0'}
 call plug#end()
 
 noremap <C-b> :NERDTreeFocus<CR>
@@ -50,10 +50,14 @@ hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
 hi Comment guifg=#5C6370 ctermfg=59
 
-lua require("toggleterm").setup()
 
 lua << END
 require('lualine').setup{
     options = {theme = "ayu_mirage"},
+}
+
+require("toggleterm").setup{
+    open_mapping =[[<c-\>]],
+    hide_numbers = true, 
 }
 END
