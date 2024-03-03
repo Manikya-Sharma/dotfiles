@@ -34,30 +34,52 @@ Plug 'https://github.com/tc50cal/vim-terminal'
 Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'lukas-reineke/lsp-format.nvim'
 Plug 'liuchengxu/space-vim-dark'
-Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.5.0'}
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.5.0'}
 call plug#end()
 
 noremap <C-b> :NERDTreeFocus<CR>
 noremap <C-b> :NERDTreeToggle<CR>
 
+" clang-format
+noremap <C-l> mf<CR>:%!clang-format<CR>'f
+
+
+" use K for documentation
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Ctrl+f for :Files
+noremap <silent> <C-f> :Files<CR>
+
+" use rg instead of grep
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 " colorscheme jellybeans
 colorscheme space-vim-dark
 hi Comment cterm=italic
-hi Normal     ctermbg=NONE guibg=NONE
-hi LineNr     ctermbg=NONE guibg=NONE
-hi SignColumn ctermbg=NONE guibg=NONE
+" hi Normal     ctermbg=NONE guibg=NONE
+" hi LineNr     ctermbg=NONE guibg=NONE
+" hi SignColumn ctermbg=NONE guibg=NONE
 hi Comment guifg=#5C6370 ctermfg=59
 
+set formatprg=clang-format
 
 lua << END
 require('lualine').setup{
     options = {theme = "ayu_mirage"},
 }
-
-require("toggleterm").setup{
-    open_mapping =[[<c-\>]],
-    hide_numbers = true, 
-}
+require('lsp-format').setup {}
 END
