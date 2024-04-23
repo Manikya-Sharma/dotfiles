@@ -73,7 +73,36 @@ require("lazy").setup(
              "folke/trouble.nvim",
              dependencies = { "nvim-tree/nvim-web-devicons" },
              opts = {},
-         }
+         },
+        {
+          'stevearc/aerial.nvim',
+          opts = {},
+          -- Optional dependencies
+          dependencies = {
+             "nvim-treesitter/nvim-treesitter",
+             "nvim-tree/nvim-web-devicons"
+          },
+            { 
+                "startup-nvim/startup.nvim",
+                  dependencies = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+                  config = function()
+                    require"startup".setup({
+                        theme = "dashboard",
+                    })
+                  end
+            },
+            {
+                "smjonas/inc-rename.nvim",
+                  config = function()
+                    require("inc_rename").setup()
+                  end,
+            },
+            {
+              'mrcjkb/haskell-tools.nvim',
+              version = '^3', -- Recommended
+              lazy = false, -- This plugin is already lazy
+            }
+        }
     }
 )
 
@@ -88,6 +117,8 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+vim.keymap.set("n", "<leader>rn", ":IncRename ")
 
 require("treesitter")
 require("mason").setup()
@@ -106,7 +137,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pyright', 'tsserver', 'dhall_lsp_server' }
+local servers = { 'clangd', 'pyright', 'tsserver' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,

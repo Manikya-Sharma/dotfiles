@@ -12,7 +12,7 @@ vim.o.shiftwidth = 4
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cc = '80'            -- column border for good coding style
-vim.o.cursorline = true
+-- vim.o.cursorline = true
 vim.o.ttyfast = true
 -- yank highlight
 vim.api.nvim_create_autocmd('TextYankPost', {

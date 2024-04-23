@@ -15,3 +15,6 @@ vim.keymap.set('n', '<C-L>', '10zl')
 -- toggle tree
 vim.keymap.set('n', '<C-Q>', ':UndotreeToggle<CR>')
 
+vim.keymap.set('n', '<C-J>', ':AerialToggle!<CR>')
+vim.keymap.set('n', '<C-M>', ':Telescope aerial<CR>')
+
