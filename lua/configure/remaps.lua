@@ -1,8 +1,7 @@
-vim.keymap.set('n', '<C-M>',':bnext<CR>')
 vim.keymap.set('n', '<C-P>',':bprev<CR>')
 vim.keymap.set('i', '<C-[>', '<ESC>')
-vim.keymap.set('n', '<C-K>', "mf<CR>:%!clang-format<CR>'fzz")
-vim.keymap.set('n', 'K', ':RustLsp hover actions<CR>')
+vim.keymap.set('n', '<C-K>', function() vim.lsp.buf.format() end)
+vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end)
 
 -- soft wrap by default
 vim.keymap.set('n', 'j', 'gj')
@@ -17,4 +16,7 @@ vim.keymap.set('n', '<C-Q>', ':UndotreeToggle<CR>')
 
 vim.keymap.set('n', '<C-J>', ':AerialToggle!<CR>')
 vim.keymap.set('n', '<C-M>', ':Telescope aerial<CR>')
+
+-- trouble.nvim
+vim.keymap.set('n', '<C-T>', ':TroubleToggle<CR>')
 
