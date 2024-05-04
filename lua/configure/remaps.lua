@@ -1,4 +1,5 @@
 vim.keymap.set('n', '<C-P>',':bprev<CR>')
+vim.keymap.set('n', '<C-N>',':bnext<CR>')
 vim.keymap.set('i', '<C-[>', '<ESC>')
 vim.keymap.set('n', '<C-K>', function() vim.lsp.buf.format() end)
 vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end)
