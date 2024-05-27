@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.cc = 1
+
 vim.keymap.set('n', '<C-P>',':bprev<CR>')
 vim.keymap.set('n', '<C-N>',':bnext<CR>')
 vim.keymap.set('i', '<C-[>', '<ESC>')
@@ -20,4 +23,25 @@ vim.keymap.set('n', '<C-M>', ':Telescope aerial<CR>')
 
 -- trouble.nvim
 vim.keymap.set('n', '<C-T>', ':TroubleToggle<CR>')
+
+-- -- keymaps for telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set("n", "<leader>rn", ":IncRename ")
+-- -- inline hints toggle
+vim.keymap.set("n", "<leader>h", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end
+)
+-- -- code actions
+vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end)
+-- -- harpoon
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+vim.keymap.set("n", "<leader>e", function() toggle_telescope(harpoon:list()) end,
+    { desc = "Open harpoon window" })
 
