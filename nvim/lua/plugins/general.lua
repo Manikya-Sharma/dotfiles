@@ -5,6 +5,9 @@ return {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
+    {
+        'https://github.com/arkav/lualine-lsp-progress'
+    },
     -- -- startup page
     {
         'goolord/alpha-nvim',
@@ -18,6 +21,24 @@ return {
     'https://github.com/rebelot/kanagawa.nvim',
     "nyoom-engineering/oxocarbon.nvim",
     { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+    {
+        'olivercederborg/poimandres.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('poimandres').setup {
+            }
+        end
+    },
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require('poimandres').setup {
+            -- leave this setup function empty for default config
+            -- or refer to the configuration section
+            -- for configuration options
+        }
+    end,
     -- -- treesitter
     'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/nvim-treesitter-textobjects',

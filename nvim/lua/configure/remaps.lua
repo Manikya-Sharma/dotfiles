@@ -39,9 +39,9 @@ end
 -- -- code actions
 vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end)
 -- -- harpoon
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
-vim.keymap.set("n", "<leader>e", function() toggle_telescope(harpoon:list()) end,
+vim.keymap.set("n", "<leader>a", function() Harpoon:list():add() end)
+vim.keymap.set("n", "<C-S-P>", function() Harpoon:list():prev() end)
+vim.keymap.set("n", "<C-S-N>", function() Harpoon:list():next() end)
+vim.keymap.set("n", "<leader>e", function() toggle_telescope(Harpoon:list()) end,
     { desc = "Open harpoon window" })
 
