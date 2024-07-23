@@ -22,7 +22,7 @@ vim.keymap.set('n', '<C-J>', ':AerialToggle!<CR>')
 vim.keymap.set('n', '<C-M>', ':Telescope aerial<CR>')
 
 -- trouble.nvim
-vim.keymap.set('n', '<C-T>', ':TroubleToggle<CR>')
+vim.keymap.set('n', '<C-T>', ':Trouble diagnostics toggle focus=true<CR>')
 
 -- -- keymaps for telescope
 local builtin = require('telescope.builtin')

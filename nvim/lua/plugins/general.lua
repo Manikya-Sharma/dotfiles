@@ -3,7 +3,7 @@ return {
     -- -- status line
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
     {
         'https://github.com/arkav/lualine-lsp-progress'
@@ -76,7 +76,11 @@ return {
     -- -- code overview
     {
         'stevearc/aerial.nvim',
-        opts = {},
+        opts = {
+            layout={
+                min_width = 20
+            }
+        },
 
         --Optional dependencies
         dependencies = { "nvim-treesitter/nvim-treesitter",
