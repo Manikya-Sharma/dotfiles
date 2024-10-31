@@ -24,7 +24,7 @@ vim.opt.fillchars = {
 -- vim.cmd [[hi foldcolumn guifg=#3b3b3b]]
 --
 vim.opt.background = "dark"
-vim.cmd('colorscheme oxocarbon')
+vim.cmd('colorscheme kanagawa')
 -- -- lualine setup
 local trouble = require("trouble")
 local symbols = trouble.statusline({
@@ -118,7 +118,7 @@ end
 -- -- mason
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo', 'asm_lsp' }
+    ensure_installed = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo' }
 }
 -- -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -126,7 +126,7 @@ local lspconfig = require('lspconfig')
 -- -- custom onattach
 local on_attach = function(client, bufnr) end
 -- -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo', 'asm_lsp' }
+local servers = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,

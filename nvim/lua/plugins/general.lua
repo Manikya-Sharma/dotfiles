@@ -19,6 +19,12 @@ return {
     'https://github.com/ryanoasis/vim-devicons',
     -- -- themes
     'https://github.com/rebelot/kanagawa.nvim',
+    {
+        "catppuccin/nvim",
+        alpha = true,
+        name = "catppuccin",
+        priority = 1000
+    },
     "nyoom-engineering/oxocarbon.nvim",
     { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
     {
@@ -77,7 +83,7 @@ return {
     {
         'stevearc/aerial.nvim',
         opts = {
-            layout={
+            layout = {
                 min_width = 20
             }
         },
