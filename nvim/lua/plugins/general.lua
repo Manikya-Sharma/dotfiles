@@ -182,12 +182,6 @@ return {
         lazy = false,
         --This plugin is already lazy
     },
-    -- -- project level marks
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" }
-    },
     -- -- types for neovim plugins
     "folke/neodev.nvim",
 }
