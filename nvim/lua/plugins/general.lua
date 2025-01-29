@@ -12,9 +12,55 @@ return {
     {
         'goolord/alpha-nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
-        end
+        opts = function()
+            local dashboard = require("alpha.themes.dashboard")
+            local logo = [[
+                                  .
+ .:......                       .:-.
+::-==-:--::..                 ..:--.
+ ...::-------:..             .:---:.
+      ..-------:..          :=----:.
+         .=+++==-:..     .-++==--:.
+           -***++=-:.  .-=+++=--...
+            :-=+*+=-:.:==++==-:...:
+           ::::::++==++++++++++=------:::..
+                ...:-=--........:-+***+++===:.
+                                   .=++======...
+                                    :=----=-..--
+                                  ..:::::::..:.
+                                .. ...
+                                  ..
+]]
+            dashboard.section.header.val = vim.split(logo, "\n")
+            dashboard.section.buttons.val = {
+                dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
+                dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
+                dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
+                dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+                dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
+                dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+            }
+            dashboard.section.header.opts.hl = "AlphaHeader"
+            dashboard.opts.layout[1].val = 2
+            return dashboard
+        end,
+        config = function(_, dashboard)
+            require("alpha").setup(dashboard.opts)
+            vim.api.nvim_create_autocmd("User", {
+                callback = function()
+                    local stats = require("lazy").stats()
+                    local ms = math.floor(stats.startuptime * 100) / 100
+                    dashboard.section.footer.val = "󱐌 Lazy-loaded "
+                        .. stats.loaded
+                        .. "/"
+                        .. stats.count
+                        .. " plugins in "
+                        .. ms
+                        .. "ms"
+                    pcall(vim.cmd.AlphaRedraw)
+                end,
+            })
+        end,
     },
     'https://github.com/ryanoasis/vim-devicons',
     -- -- themes
@@ -143,13 +189,60 @@ return {
     'https://github.com/neovim/nvim-lspconfig',
     -- -- mason configuraton with lsp
     'williamboman/mason-lspconfig.nvim',
-    -- -- automcomplete
-    'hrsh7th/nvim-cmp',
     -- -- lsp autocomplete
-    'hrsh7th/cmp-nvim-lsp',
-    -- -- snippets
-    'saadparwaiz1/cmp_luasnip',
-    'L3MON4D3/LuaSnip',
+    {
+        'saghen/blink.cmp',
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = '*',
+        opts = {
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono',
+                kind_icons = {
+                    Text = "",
+                    Method = "󰡱",
+                    Function = "󰊕",
+                    Constructor = "",
+                    Field = "",
+                    Variable = "󰂡",
+                    Class = "",
+                    Interface = "",
+                    Module = "",
+                    Property = "󰜢",
+                    Unit = "",
+                    Value = "󰎠",
+                    Enum = "",
+                    Keyword = "󰌋",
+                    Snippet = "󰒕",
+                    Color = "󰏘",
+                    Reference = "",
+                    File = "",
+                    Folder = "󰉋",
+                    EnumMember = "",
+                    Constant = "󰏿",
+                    Struct = "",
+                    Event = "",
+                    Operator = "󰆕",
+                    TypeParameter = "󰅲",
+                },
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                cmdline = {}
+            },
+            completion = {
+                accept = {
+                    auto_brackets = { enabled = false },
+                },
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 500,
+                    treesitter_highlighting = false,
+                },
+            },
+        },
+        opts_extend = { "sources.default" }
+    },
     -- -- better rust support
     {
         'mrcjkb/rustaceanvim',
