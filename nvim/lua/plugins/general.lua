@@ -8,89 +8,58 @@ return {
     {
         'https://github.com/arkav/lualine-lsp-progress'
     },
-    -- -- startup page
-    {
-        'goolord/alpha-nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        opts = function()
-            local dashboard = require("alpha.themes.dashboard")
-            local logo = [[
-                                  .
- .:......                       .:-.
-::-==-:--::..                 ..:--.
- ...::-------:..             .:---:.
-      ..-------:..          :=----:.
-         .=+++==-:..     .-++==--:.
-           -***++=-:.  .-=+++=--...
-            :-=+*+=-:.:==++==-:...:
-           ::::::++==++++++++++=------:::..
-                ...:-=--........:-+***+++===:.
-                                   .=++======...
-                                    :=----=-..--
-                                  ..:::::::..:.
-                                .. ...
-                                  ..
-]]
-            dashboard.section.header.val = vim.split(logo, "\n")
-            dashboard.section.buttons.val = {
-                dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
-                dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-                dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-                dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
-                dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
-                dashboard.button("q", " " .. " Quit", ":qa<CR>"),
-            }
-            dashboard.section.header.opts.hl = "AlphaHeader"
-            dashboard.opts.layout[1].val = 2
-            return dashboard
-        end,
-        config = function(_, dashboard)
-            require("alpha").setup(dashboard.opts)
-            vim.api.nvim_create_autocmd("User", {
-                callback = function()
-                    local stats = require("lazy").stats()
-                    local ms = math.floor(stats.startuptime * 100) / 100
-                    dashboard.section.footer.val = "󱐌 Lazy-loaded "
-                        .. stats.loaded
-                        .. "/"
-                        .. stats.count
-                        .. " plugins in "
-                        .. ms
-                        .. "ms"
-                    pcall(vim.cmd.AlphaRedraw)
-                end,
-            })
-        end,
-    },
-    'https://github.com/ryanoasis/vim-devicons',
+    { 'https://github.com/ryanoasis/vim-devicons' },
     -- -- themes
-    'https://github.com/rebelot/kanagawa.nvim',
+    {
+        'https://github.com/shaunsingh/nord.nvim',
+    },
+    {
+        'https://github.com/shaunsingh/nord.nvim',
+        lazy = false,
+        priority = 1000
+    },
+    {
+        'https://github.com/rebelot/kanagawa.nvim',
+        lazy = false,
+        priority = 1000
+    },
     {
         "catppuccin/nvim",
-        alpha = true,
+        integrations = {
+            alpha = true,
+            aerial = true,
+            blink_cmp = true,
+            mason = true,
+            nvim_surround = true,
+            telescope = {
+                enabled = true,
+                style = "nvchad",
+            },
+            lsp_trouble = true,
+        },
         name = "catppuccin",
         priority = 1000
     },
-    "nyoom-engineering/oxocarbon.nvim",
-    { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
     {
-        'olivercederborg/poimandres.nvim',
+        "folke/tokyonight.nvim",
         lazy = false,
         priority = 1000,
-        config = function()
-            require('poimandres').setup {
-            }
-        end
     },
-    lazy = false,
-    priority = 1000,
-    config = function()
-        require('poimandres').setup {
-            -- leave this setup function empty for default config
-            -- or refer to the configuration section
-            -- for configuration options
-        }
-    end,
+    {
+        "nyoom-engineering/oxocarbon.nvim",
+        lazy = false,
+        priority = 1000
+    },
+    {
+        "bluz71/vim-nightfly-colors",
+        name = "nightfly",
+        lazy = false,
+        priority = 1000
+    },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine"
+    },
     -- -- treesitter
     'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -111,6 +80,38 @@ return {
                 blank = { enable = false },
             })
         end
+    },
+    -- -- cmdline at center
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            lsp = {
+                hover = {
+                    enabled = false
+                },
+                signature = {
+                    enabled = false
+                }
+            },
+            presets = {
+                bottom_search = true,         -- use a classic bottom cmdline for search
+                command_palette = true,       -- position the cmdline and popupmenu together
+                long_message_to_split = true, -- long messages will be sent to a split
+                inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+                lsp_doc_border = false,       -- add a border to hover docs and signature help
+            },
+            health = {
+                checker = false,
+            },
+            messages = {
+                enabled = false,
+                view_search = false
+            }
+        },
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        }
     },
     -- functional
     -- -- telescope
@@ -133,7 +134,6 @@ return {
                 min_width = 20
             }
         },
-
         --Optional dependencies
         dependencies = { "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons" },
@@ -164,7 +164,6 @@ return {
                 return { "treesitter", "indent" }
             end,
         },
-
         init = function()
             vim.o.foldcolumn = "1" -- '0' is not bad
             vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
@@ -192,7 +191,6 @@ return {
     -- -- lsp autocomplete
     {
         'saghen/blink.cmp',
-        dependencies = 'rafamadriz/friendly-snippets',
         version = '*',
         opts = {
             appearance = {
@@ -227,14 +225,23 @@ return {
                 },
             },
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
-                cmdline = {}
+                providers = {
+                    cmdline = {
+                        -- ignores cmdline completions when executing shell commands
+                        enabled = function()
+                            return vim.fn.getcmdtype() ~= ':' or not vim.fn.getcmdline():match("^[%%0-9,'<>%-%.]*!")
+                        end
+                    }
+                }
             },
             completion = {
                 accept = {
                     auto_brackets = { enabled = false },
                 },
                 documentation = {
+                    window = {
+                        border = 'rounded'
+                    },
                     auto_show = true,
                     auto_show_delay_ms = 500,
                     treesitter_highlighting = false,
@@ -277,4 +284,14 @@ return {
     },
     -- -- types for neovim plugins
     "folke/neodev.nvim",
+    -- -- oil.nvim for netrw like workflow
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+        lazy = false,
+    },
 }

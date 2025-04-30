@@ -24,9 +24,21 @@ vim.opt.fillchars = {
 -- vim.cmd [[hi foldcolumn guifg=#3b3b3b]]
 --
 
+require("rose-pine").setup({
+    styles = {
+        bold = false,
+        italic = true,
+        transparency = false
+    }
+})
 vim.opt.background = "dark"
-vim.cmd('colorscheme kanagawa')
+
+vim.g.nord_disable_background = true
+vim.cmd('colorscheme nord')
+require("nord").set()
+
 -- -- lualine setup
+
 local trouble = require("trouble")
 local symbols = trouble.statusline({
     mode = "lsp_document_symbols",
@@ -36,12 +48,56 @@ local symbols = trouble.statusline({
     format = "{kind_icon}{symbol.name:Normal}",
     -- The following line is needed to fix the background color
     -- Set it to the lualine section you want to use
-    hl_group = "lualine_c_normal",
+    hl_group = "lualine_c",
 })
 
 require("lualine").setup({
     options = {
-        theme = "horizon",
+        theme = function()
+            local colors = {
+                darkgray = "#16161d",
+                gray = "#727169",
+                innerbg = nil,
+                outerbg = "#16161D",
+                normal = "#88c0d0",
+                insert = "#a3be8c",
+                visual = "#d08770",
+                replace = "#bf616a",
+                command = "#ebcb8b",
+            }
+            return {
+                inactive = {
+                    a = { fg = colors.gray, bg = colors.outerbg, gui = "bold" },
+                    b = { fg = colors.gray, bg = colors.outerbg },
+                    c = { fg = colors.gray, bg = colors.innerbg },
+                },
+                visual = {
+                    a = { fg = colors.darkgray, bg = colors.visual, gui = "bold" },
+                    b = { fg = colors.gray, bg = colors.outerbg },
+                    c = { fg = colors.gray, bg = colors.innerbg },
+                },
+                replace = {
+                    a = { fg = colors.darkgray, bg = colors.replace, gui = "bold" },
+                    b = { fg = colors.gray, bg = colors.outerbg },
+                    c = { fg = colors.gray, bg = colors.innerbg },
+                },
+                normal = {
+                    a = { fg = colors.darkgray, bg = colors.normal, gui = "bold" },
+                    b = { fg = colors.gray, bg = colors.outerbg },
+                    c = { fg = colors.gray, bg = colors.innerbg },
+                },
+                insert = {
+                    a = { fg = colors.darkgray, bg = colors.insert, gui = "bold" },
+                    b = { fg = colors.gray, bg = colors.outerbg },
+                    c = { fg = colors.gray, bg = colors.innerbg },
+                },
+                command = {
+                    a = { fg = colors.darkgray, bg = colors.command, gui = "bold" },
+                    b = { fg = colors.gray, bg = colors.outerbg },
+                    c = { fg = colors.gray, bg = colors.innerbg },
+                },
+            }
+        end,
         component_separators = '',
         section_separators = { left = '', right = '' },
     },
@@ -49,7 +105,7 @@ require("lualine").setup({
         lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
         lualine_b = { 'filename', 'branch' },
         lualine_c = {
-            'lsp_progress', --[[ add your center compoentnts here in place of this comment ]]
+            'lsp_progress',
             {
                 symbols.get,
                 cond = symbols.has,
@@ -72,6 +128,8 @@ require("lualine").setup({
     tabline = {},
     extensions = {},
 })
+vim.api.nvim_set_hl(0, "StatusLine", { link = "lualine_c_normal" })
+
 -- tree sitter additional objects
 require("treesitter")
 require("nvim-treesitter.configs").setup({
@@ -91,9 +149,21 @@ require("nvim-treesitter.configs").setup({
 -- -- telescope setup
 require("telescope").setup({
     defaults = {
-        file_ignore_patterns = { "node_modules" }
+        file_ignore_patterns = { "node_modules" },
+        mappings = {
+            i = {
+                ["<esc>"] = require("telescope.actions").close,
+            }
+        }
     }
 })
+
+
+-- oil.nvim
+require("oil").setup({
+    skip_confirm_for_simple_edits = true,
+})
+
 
 -- lsp configuration
 
