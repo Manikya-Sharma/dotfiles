@@ -11,6 +11,11 @@ return {
     { 'https://github.com/ryanoasis/vim-devicons' },
     -- -- themes
     {
+        "webhooked/kanso.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+    {
         'https://github.com/shaunsingh/nord.nvim',
     },
     {
@@ -81,38 +86,6 @@ return {
             })
         end
     },
-    -- -- cmdline at center
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = {
-            lsp = {
-                hover = {
-                    enabled = false
-                },
-                signature = {
-                    enabled = false
-                }
-            },
-            presets = {
-                bottom_search = true,         -- use a classic bottom cmdline for search
-                command_palette = true,       -- position the cmdline and popupmenu together
-                long_message_to_split = true, -- long messages will be sent to a split
-                inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-                lsp_doc_border = false,       -- add a border to hover docs and signature help
-            },
-            health = {
-                checker = false,
-            },
-            messages = {
-                enabled = false,
-                view_search = false
-            }
-        },
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-        }
-    },
     -- functional
     -- -- telescope
     {
@@ -182,16 +155,18 @@ return {
     -- -- register peek
     'junegunn/vim-peekaboo',
     -- lsp
+    {
+        'https://github.com/neovim/nvim-lspconfig',
+    },
     -- -- lsp providers
     "williamboman/mason.nvim",
-    -- -- neovim lsp api
-    'https://github.com/neovim/nvim-lspconfig',
     -- -- mason configuraton with lsp
     'williamboman/mason-lspconfig.nvim',
     -- -- lsp autocomplete
     {
         'saghen/blink.cmp',
         version = '*',
+        event = "InsertEnter",
         opts = {
             appearance = {
                 use_nvim_cmp_as_default = true,
@@ -247,15 +222,12 @@ return {
                     treesitter_highlighting = false,
                 },
             },
+            -- signature = {
+            --     enabled = true,
+            --     winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder',
+            -- }
         },
         opts_extend = { "sources.default" }
-    },
-    -- -- better rust support
-    {
-        'mrcjkb/rustaceanvim',
-        version = '^4',
-        --Recommended
-        ft = { 'rust' },
     },
     -- -- highlight comments
     {
@@ -284,14 +256,4 @@ return {
     },
     -- -- types for neovim plugins
     "folke/neodev.nvim",
-    -- -- oil.nvim for netrw like workflow
-    {
-        'stevearc/oil.nvim',
-        ---@module 'oil'
-        ---@type oil.SetupOpts
-        opts = {},
-        dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-        lazy = false,
-    },
 }

@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 vim.cc = 1
 
 vim.keymap.set('n', '<C-P>',':bprev<CR>')

@@ -25,3 +25,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 vim.o.grepprg = 'rg --vimgrep --smart-case --follow'
 vim.o.formatprg = 'clang-format'
+
+vim.g.mapleader = " "
+
