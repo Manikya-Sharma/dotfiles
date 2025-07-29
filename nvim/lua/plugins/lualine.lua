@@ -5,7 +5,7 @@ return {
     },
     config = function()
         require("lualine").setup({
-            theme = { 'kanagawa' },
+            theme = { 'everforest' },
             options = {
                 section_separators = { left = ' ', right = ' ' },
             },
