@@ -1,8 +1,8 @@
 vim.o.compatible = false -- disable compatibility with vi
-vim.o.showmatch = true   
+vim.o.showmatch = true
 vim.o.ignorecase = true  -- case insensitive
 vim.o.smartcase = true
-vim.o.hlsearch = false    -- highlight search remove
+vim.o.hlsearch = false   -- highlight search remove
 vim.o.incsearch = true   -- incremental search
 vim.o.wrap = false       -- remove soft wrapping
 vim.o.tabstop = 4
@@ -11,8 +11,8 @@ vim.o.expandtab = true
 vim.o.shiftwidth = 4
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.cc = '80'            -- column border for good coding style
--- vim.o.cursorline = true
+vim.o.cc = '80' -- column border for good coding style
+vim.o.cursorline = true
 vim.o.ttyfast = true
 -- yank highlight
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -27,4 +27,4 @@ vim.o.grepprg = 'rg --vimgrep --smart-case --follow'
 vim.o.formatprg = 'clang-format'
 
 vim.g.mapleader = " "
-
+vim.g.netrw_liststyle = 3

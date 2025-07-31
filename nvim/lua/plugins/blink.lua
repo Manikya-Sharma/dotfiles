@@ -62,10 +62,11 @@ return {
                 treesitter_highlighting = false,
             },
         },
-        -- signature = {
-        --     enabled = true,
-        --     winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder',
-        -- }
+        keymap = { preset = 'enter' },
+        signature = {
+            enabled = true,
+            winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder',
+        }
     },
     opts_extend = { "sources.default" }
 }

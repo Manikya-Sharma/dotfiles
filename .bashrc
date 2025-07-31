@@ -9,6 +9,7 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
+alias hx='helix'
 alias ls='eza --icons'
 alias cr='cargo run'
 alias cb='cargo build'
@@ -21,9 +22,6 @@ alias catl='bat --theme=OneHalfDark'
 alias cpstd='python3 ~/programming/c/cp/utils/debugging/cf_template.py'
 alias csstd='NOTC=1 cpstd'
 alias dbgrun='python3 ~/programming/c/cp/utils/debugging/cfdbg.py'
-
-# Avoid extra newlines due to \r in windows
-stty -igncr
 
 # Bash appearance
 PS1="\n\e[0;34m\w\e[0m\n> "

@@ -4,7 +4,7 @@ vim.keymap.set('n', '<C-P>', ':bprev<CR>')
 vim.keymap.set('n', '<C-N>', ':bnext<CR>')
 vim.keymap.set('n', '<C-S>', ':bd<CR>')
 vim.keymap.set('i', '<C-[>', '<ESC>')
-vim.keymap.set('n', '<C-K>', function() vim.lsp.buf.format() end)
+vim.keymap.set('n', '<C-K>', function() require('conform').format() end)
 vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end)
 
 -- soft wrap by default
@@ -24,8 +24,13 @@ vim.keymap.set('n', '<C-T>', ':Trouble diagnostics toggle focus=true<CR>')
 -- undotree
 vim.keymap.set('n', '<C-Q>', ':UndotreeToggle<CR>')
 
--- fyler
-vim.keymap.set('n', '<leader>p', ':Fyler kind=split:right<CR>')
+-- file tree
+vim.keymap.set('n', '<leader>p', ':Vexplore<CR>30<C-W>|')
+
+-- gitsigns
+vim.keymap.set('n', '<leader>gn', ':Gitsigns next_hunk<CR>')
+vim.keymap.set('n', '<leader>gp', ':Gitsigns prev_hunk<CR>')
+vim.keymap.set('n', '<leader>gd', ':Gitsigns diffthis<CR>')
 
 -- -- keymaps for telescope
 local builtin = require('telescope.builtin')

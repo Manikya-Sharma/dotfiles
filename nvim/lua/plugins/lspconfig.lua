@@ -2,7 +2,7 @@ return {
     'https://github.com/neovim/nvim-lspconfig',
     init = function()
         vim.diagnostic.config({ virtual_text = true })
-        local servers = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo', 'rust_analyzer' }
+        local servers = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo', 'rust_analyzer', 'oxlint' }
         require("mason").setup()
         require("mason-lspconfig").setup {
             ensure_installed = servers,
