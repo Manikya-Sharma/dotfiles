@@ -31,6 +31,8 @@ vim.keymap.set('n', '<leader>p', ':Vexplore<CR>30<C-W>|')
 vim.keymap.set('n', '<leader>gn', ':Gitsigns next_hunk<CR>')
 vim.keymap.set('n', '<leader>gp', ':Gitsigns prev_hunk<CR>')
 vim.keymap.set('n', '<leader>gd', ':Gitsigns diffthis<CR>')
+vim.keymap.set('n', '<leader>gg', ':Gitsigns preview_hunk<CR>')
+vim.keymap.set('n', '<leader>gb', ':Gitsigns blame<CR>')
 
 -- -- keymaps for telescope
 local builtin = require('telescope.builtin')

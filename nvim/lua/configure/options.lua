@@ -28,3 +28,13 @@ vim.o.formatprg = 'clang-format'
 
 vim.g.mapleader = " "
 vim.g.netrw_liststyle = 3
+
+-- use treesitter for indent
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+-- use indent for fold
+vim.opt.fillchars = { fold = " " }
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
+vim.g.markdown_folding = 1 -- enable markdown folding
