@@ -25,7 +25,7 @@ vim.keymap.set('n', '<C-T>', ':Trouble diagnostics toggle focus=true<CR>')
 vim.keymap.set('n', '<C-Q>', ':UndotreeToggle<CR>')
 
 -- file tree
-vim.keymap.set('n', '<leader>p', ':Vexplore<CR>30<C-W>|')
+vim.keymap.set('n', '<leader>p', ':Vexplore!<CR>30<C-W>|')
 
 -- gitsigns
 vim.keymap.set('n', '<leader>gn', ':Gitsigns next_hunk<CR>')

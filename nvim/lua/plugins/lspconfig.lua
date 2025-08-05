@@ -1,3 +1,14 @@
+local extra_configs = function()
+    vim.lsp.config("lua_ls", {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { "vim" } }
+            }
+        }
+    })
+end
+
 return {
     'https://github.com/neovim/nvim-lspconfig',
     init = function()
@@ -10,6 +21,7 @@ return {
         }
         local capabilities = require("blink.cmp").get_lsp_capabilities()
         vim.lsp.enable(servers)
+        extra_configs()
         vim.lsp.config('*', capabilities)
     end
 }

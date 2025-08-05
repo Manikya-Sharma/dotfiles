@@ -31,14 +31,14 @@ return {
             },
             sections = {
                 lualine_a = { { 'mode', separator = { left = '', right = '' } } },
-                lualine_b = { 'filename' },
+                lualine_b = { { 'aerial', dense_sep = '.', dense = true } },
                 lualine_c = { diagnostics, lsp_status },
                 lualine_x = { arrow_status, 'branch' },
                 lualine_y = { diff },
                 lualine_z = { { 'location', separator = { left = '', right = '' } } },
             },
             inactive_sections = {
-                lualine_a = { 'filename' },
+                lualine_a = {},
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = { diff },
