@@ -13,24 +13,22 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cc = '80' -- column border for good coding style
 vim.o.cursorline = true
+vim.o.cursorlineopt = 'number'
 vim.o.ttyfast = true
 -- yank highlight
 vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('highlight_yank', {}),
-  desc = 'Hightlight selection on yank',
-  pattern = '*',
-  callback = function()
-    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
-  end,
+    group = vim.api.nvim_create_augroup('highlight_yank', {}),
+    desc = 'Hightlight selection on yank',
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
+    end,
 })
 vim.o.grepprg = 'rg --vimgrep --smart-case --follow'
 vim.o.formatprg = 'clang-format'
 
 vim.g.mapleader = " "
 vim.g.netrw_liststyle = 3
-
--- use treesitter for indent
-vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 -- use indent for fold
 vim.opt.fillchars = { fold = " " }

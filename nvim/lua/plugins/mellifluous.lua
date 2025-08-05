@@ -21,6 +21,6 @@ return {
                 }
             }
         })
-        vim.cmd("colorscheme mellifluous")
+        -- vim.cmd("colorscheme mellifluous")
     end,
 }
