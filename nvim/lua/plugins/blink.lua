@@ -1,15 +1,13 @@
 return {
     'saghen/blink.cmp',
-    dependencies = {
-        "xzbdmw/colorful-menu.nvim"
-    },
-    version = '*',
+    event = "InsertEnter",
     init = function()
         local servers = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo', 'rust_analyzer' }
         local capabilities = require("blink.cmp").get_lsp_capabilities()
         vim.lsp.enable(servers)
         vim.lsp.config('*', capabilities)
     end,
+    build = 'cargo build --release',
     opts = {
         appearance = {
             use_nvim_cmp_as_default = true,
@@ -85,7 +83,9 @@ return {
         keymap = { preset = 'enter' },
         signature = {
             enabled = true,
-            winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder',
+            window = {
+                border = "single"
+            }
         }
     },
     opts_extend = { "sources.default" }

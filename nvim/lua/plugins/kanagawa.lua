@@ -22,5 +22,6 @@ return {
             DiagnosticVirtualTextWarn  = makeDiagnosticColor(theme.diag.warning),
             DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
         }
-    end
+    end,
+    enabled = false
 }

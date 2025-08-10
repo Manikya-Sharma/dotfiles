@@ -1,5 +1,5 @@
 return {
     "xzbdmw/colorful-menu.nvim",
-    config = function()
-    end
+    config = true,
+    event = "VeryLazy"
 }

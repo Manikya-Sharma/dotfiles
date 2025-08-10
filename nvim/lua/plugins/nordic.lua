@@ -5,9 +5,13 @@ return {
     config = function()
         require('nordic').load()
         require('nordic').setup({
+            on_palette = function(palette)
+                local old_gray = palette.gray0
+                palette.gray0 = palette.black0
+                palette.black0 = old_gray
+            end,
             bold_keywords = true,
-            transparent = { bg = true },
-            telescope = { style = 'classic' },
+            bright_border = true,
         })
     end
 }

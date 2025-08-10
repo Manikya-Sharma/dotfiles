@@ -23,6 +23,7 @@ return {
         local diff = {
             'diff',
             symbols = { added = ' ', modified = ' ', removed = ' ' },
+            separator = { left = '' },
         }
         require("lualine").setup({
             theme = 'auto',
@@ -30,11 +31,11 @@ return {
                 section_separators = { left = ' ', right = ' ' },
             },
             sections = {
-                lualine_a = { { 'mode', separator = { left = '', right = '' } } },
-                lualine_b = { { 'aerial', dense_sep = '.', dense = true } },
-                lualine_c = { diagnostics, lsp_status },
+                lualine_a = { { 'mode', separator = { left = '', right = '' }, icons_enabled = true, icon = '' } },
+                lualine_b = { { 'aerial', dense_sep = '.', dense = true, separator = { right = '' } } },
+                lualine_c = { diagnostics },
                 lualine_x = { arrow_status, 'branch' },
-                lualine_y = { diff },
+                lualine_y = { diff, lsp_status },
                 lualine_z = { { 'location', separator = { left = '', right = '' } } },
             },
             inactive_sections = {
