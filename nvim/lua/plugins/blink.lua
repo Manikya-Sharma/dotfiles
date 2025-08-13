@@ -59,7 +59,11 @@ return {
                     components = {
                         label = {
                             text = function(ctx)
-                                return require("colorful-menu").blink_components_text(ctx)
+                                local success, colorful_menu = pcall(require, "colorful-menu")
+                                if not success then
+                                    vim.notify("colorful-menu not found", "error", { title = "Config" })
+                                end
+                                return colorful_menu.blink_components_text(ctx)
                             end,
                             highlight = function(ctx)
                                 return require("colorful-menu").blink_components_highlight(ctx)

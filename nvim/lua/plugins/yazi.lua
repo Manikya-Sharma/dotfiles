@@ -8,12 +8,12 @@ return {
         {
             "<leader>-",
             mode = { "n", "v" },
-            "<cmd>Yazi<cr>",
+            function() vim.cmd('Yazi') end,
             desc = "Open yazi at the current file",
         },
         {
             "<leader>p",
-            "<cmd>Yazi cwd<cr>",
+            function() vim.cmd('Yazi cwd') end,
             desc = "Open the file manager in nvim's working directory",
         },
     },

@@ -4,8 +4,12 @@ return {
         'nvim-tree/nvim-web-devicons',
     },
     config = function()
-        local statusline = require("arrow.statusline")
+        local success, statusline = pcall(require, "arrow.statusline")
         local function arrow_status()
+            if not success then
+                vim.notify("Arrow not found", "error", { title = "Config" })
+                return {}
+            end
             return statusline.text_for_statusline_with_icons()
         end
         local diagnostics = {

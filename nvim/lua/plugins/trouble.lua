@@ -6,7 +6,7 @@ return {
     keys = {
         {
             "<C-T>",
-            "<cmd>Trouble diagnostics toggle focus=true<cr>",
+            function() vim.cmd('Trouble diagnostics toggle focus=true') end,
             desc = "Toggle diagnostics"
         }
     }

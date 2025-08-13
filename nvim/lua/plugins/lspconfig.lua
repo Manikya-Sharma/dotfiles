@@ -3,7 +3,8 @@ local extra_configs = function()
         settings = {
             Lua = {
                 diagnostics = {
-                    globals = { "vim" } }
+                    globals = { "vim" }
+                }
             }
         }
     })
@@ -13,7 +14,7 @@ return {
     'https://github.com/neovim/nvim-lspconfig',
     init = function()
         vim.diagnostic.config({ virtual_text = true })
-        local servers = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo', 'rust_analyzer', 'oxlint' }
+        local servers = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo', 'rust_analyzer', 'oxlint', 'tailwindcss' }
         require("mason").setup()
         require("mason-lspconfig").setup {
             ensure_installed = servers,
