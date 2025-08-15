@@ -1,3 +1,4 @@
+-- TODO: Is it really needed?
 return {
     "sphamba/smear-cursor.nvim",
     opts = {

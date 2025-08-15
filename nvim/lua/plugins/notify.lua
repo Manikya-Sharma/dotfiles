@@ -1,3 +1,4 @@
+-- TODO: Is it really needed?
 return {
     'rcarriga/nvim-notify',
     lazy = false,
