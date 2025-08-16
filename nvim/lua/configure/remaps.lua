@@ -45,6 +45,10 @@ vim.keymap.set('n', '<C-M>', function() vim.cmd('Telescope aerial') end)
 -- undotree
 vim.keymap.set('n', '<C-Q>', function() vim.cmd('UndotreeToggle') end)
 
+-- neotree
+vim.keymap.set('n', '<leader> ', function() vim.cmd('Neotree toggle') end)
+vim.keymap.set('n', '<leader>\'', function() vim.cmd('Neotree toggle reveal') end)
+
 -- gitsigns
 vim.keymap.set('n', '<leader>gn', function() vim.cmd('Gitsigns next_hunk') end)
 vim.keymap.set('n', '<leader>gp', function() vim.cmd('Gitsigns prev_hunk') end)

@@ -3,5 +3,7 @@ return {
     opts = {
         italic_comments = true,
     },
-    priority = 1000
+    priority = 1000,
+    -- waiting for better Treesitter highlighting
+    enabled = false,
 }

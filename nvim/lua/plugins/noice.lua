@@ -10,6 +10,7 @@ return {
                 ["vim.lsp.util.stylize_markdown"] = true,
             },
             signature = { enabled = false },
+            hover = { enabled = false }
         },
         routes = {
             -- aviod written/changed/deleted messages
@@ -31,5 +32,6 @@ return {
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
-    }
+    },
+    enabled = false,
 }

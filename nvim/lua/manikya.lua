@@ -2,4 +2,4 @@ require("configure/options")
 require("lazy-setup")
 require("configure/remaps")
 
-vim.cmd('colorscheme techbase')
+vim.cmd('colorscheme nordic')
