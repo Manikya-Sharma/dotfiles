@@ -14,7 +14,7 @@ return {
         end
         local diagnostics = {
             "diagnostics",
-            sources = { "nvim_diagnostic" },
+            sources = { "nvim_lsp" },
             symbols = { error = " ", warn = " ", info = " " },
         }
         local lsp_status = {
