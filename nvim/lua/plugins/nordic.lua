@@ -13,5 +13,6 @@ return {
             bold_keywords = true,
             bright_border = true,
         })
-    end
+    end,
+    enabled = false
 }

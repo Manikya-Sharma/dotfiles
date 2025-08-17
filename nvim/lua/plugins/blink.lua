@@ -1,10 +1,36 @@
+local icons = {
+    Text = "",
+    Method = "󰡱",
+    Function = "󰊕",
+    Constructor = "",
+    Field = "",
+    Variable = "󰂡",
+    Class = "",
+    Interface = "",
+    Module = "",
+    Property = "󰜢",
+    Unit = "",
+    Value = "󰎠",
+    Enum = "",
+    Keyword = "󰌋",
+    Snippet = "󰒕",
+    Color = "󰏘",
+    Reference = "",
+    File = "",
+    Folder = "󰉋",
+    EnumMember = "",
+    Constant = "󰏿",
+    Struct = "",
+    Event = "",
+    Operator = "󰆕",
+    TypeParameter = "󰅲",
+}
+
 return {
     'saghen/blink.cmp',
     event = "InsertEnter",
     init = function()
-        local servers = { 'clangd', 'pyright', 'ts_ls', 'lua_ls', 'taplo', 'rust_analyzer' }
         local capabilities = require("blink.cmp").get_lsp_capabilities()
-        vim.lsp.enable(servers)
         vim.lsp.config('*', capabilities)
     end,
     build = 'cargo build --release',
@@ -12,33 +38,7 @@ return {
         appearance = {
             use_nvim_cmp_as_default = true,
             nerd_font_variant = 'mono',
-            kind_icons = {
-                Text = "",
-                Method = "󰡱",
-                Function = "󰊕",
-                Constructor = "",
-                Field = "",
-                Variable = "󰂡",
-                Class = "",
-                Interface = "",
-                Module = "",
-                Property = "󰜢",
-                Unit = "",
-                Value = "󰎠",
-                Enum = "",
-                Keyword = "󰌋",
-                Snippet = "󰒕",
-                Color = "󰏘",
-                Reference = "",
-                File = "",
-                Folder = "󰉋",
-                EnumMember = "",
-                Constant = "󰏿",
-                Struct = "",
-                Event = "",
-                Operator = "󰆕",
-                TypeParameter = "󰅲",
-            },
+            kind_icons = icons,
         },
         sources = {
             providers = {
@@ -84,7 +84,14 @@ return {
                 treesitter_highlighting = false,
             },
         },
-        keymap = { preset = 'enter' },
+        keymap = {
+            preset = 'enter',
+            ['<C-L>'] = {
+                function(cmp)
+                    cmp.show()
+                end
+            }
+        },
         signature = {
             enabled = true,
             window = {

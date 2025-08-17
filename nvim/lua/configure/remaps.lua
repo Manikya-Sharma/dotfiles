@@ -69,6 +69,18 @@ vim.keymap.set("n", "<leader>h", function()
 end
 )
 
+-- cursorcolumn toggle
+vim.keymap.set('n', '<leader>cc', function()
+    local exists = vim.o.cursorcolumn
+    if exists then
+        vim.notify("Unset cursorcolumn", "info", { title = "Config" })
+        vim.cmd('set nocursorcolumn')
+    else
+        vim.notify("Set cursorcolumn", "info", { title = "Config" })
+        vim.cmd('set cursorcolumn')
+    end
+end)
+
 -- smear
 vim.keymap.set('n', '<leader>sm', function()
     local success = pcall(require, 'smear_cursor')

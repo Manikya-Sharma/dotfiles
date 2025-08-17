@@ -6,5 +6,3 @@ require("configure/options")
 require("lazy-setup")
 require("configure/lsp")
 require("configure/remaps")
-
-vim.cmd('colorscheme nordic')

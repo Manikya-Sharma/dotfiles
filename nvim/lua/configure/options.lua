@@ -13,7 +13,6 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cc = ''
 vim.o.cursorline = true
-vim.o.cursorcolumn = true
 vim.o.cursorlineopt = 'number'
 vim.o.ttyfast = true
 -- yank highlight
