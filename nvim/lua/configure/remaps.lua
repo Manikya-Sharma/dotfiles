@@ -1,14 +1,6 @@
 vim.keymap.set('n', '<C-P>', function() vim.cmd('bprev') end)
 vim.keymap.set('n', '<C-N>', function() vim.cmd('bnext') end)
-vim.keymap.set('n', '<C-S>', function()
-    local success, snacks = pcall(require, "snacks")
-    if not success then
-        vim.notify("Snacks not found", "warn", { title = "Config" })
-        vim.cmd('bd')
-    else
-        snacks.bufdelete()
-    end
-end)
+vim.keymap.set('n', '<C-S>', Bufdelete)
 vim.keymap.set('i', '<C-[>', '<ESC>')
 vim.keymap.set('n', '<C-K>', function()
     local success, conform = pcall(require, "conform")
