@@ -1,11 +1,10 @@
 return {
-    "sindrets/diffview.nvim",
-    lazy = false,
-    opts = {
-        view = {
-            merge_tool = {
-                layout = "diff4_mixed"
-            }
-        }
-    }
+	"sindrets/diffview.nvim",
+	opts = {
+		view = {
+			merge_tool = {
+				layout = "diff4_mixed",
+			},
+		},
+	},
 }

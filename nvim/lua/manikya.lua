@@ -1,5 +1,13 @@
-Servers = { 'clangd', 'pyright', 'typescript-language-server', 'lua-language-server', 'taplo', 'rust-analyzer',
-    'tailwindcss-language-server', 'oxlint' }
+Servers = {
+	"clangd",
+	"pyright",
+	"typescript-language-server",
+	"lua-language-server",
+	"taplo",
+	"rust-analyzer",
+	"tailwindcss-language-server",
+	"oxlint",
+}
 -- MasonInstall clangd pyright typescript-language-server lua-language-server taplo rust-analyzer tailwindcss-language-server oxlint
 
 -- enable options plugins only for looks
