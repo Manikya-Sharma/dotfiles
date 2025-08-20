@@ -29,18 +29,34 @@ return {
             symbols = { added = ' ', modified = ' ', removed = ' ' },
             separator = { left = '' },
         }
+        local aerial = {
+            'aerial',
+            depth = -3,
+            dense_sep = '.',
+            dense = true,
+            colored = true
+        }
+        local tabline = {
+            lualine_a = {},
+            lualine_b = {},
+            lualine_c = { { 'buffers', symbols = { alternate_file = '' } } },
+            lualine_x = { aerial, { 'tabs', show_modified_status = false } },
+            lualine_y = {},
+            lualine_z = {},
+        }
         require("lualine").setup({
             theme = 'auto',
             options = {
                 section_separators = { left = ' ', right = ' ' },
+                component_separators = { left = ' ', right = ' ' },
             },
             sections = {
-                lualine_a = { { 'mode', separator = { left = '', right = '' }, icons_enabled = true, icon = '' } },
-                lualine_b = { { 'aerial', dense_sep = '.', dense = true, separator = { right = '' } } },
-                lualine_c = { diagnostics },
-                lualine_x = { arrow_status, 'branch' },
-                lualine_y = { diff, lsp_status },
-                lualine_z = { { 'location', separator = { left = '', right = '' } } },
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = { 'branch', diagnostics },
+                lualine_x = { arrow_status, diff, lsp_status },
+                lualine_y = {},
+                lualine_z = { 'location' },
             },
             inactive_sections = {
                 lualine_a = {},
@@ -50,8 +66,8 @@ return {
                 lualine_y = {},
                 lualine_z = {},
             },
-            tabline = {},
-            extensions = {},
+            tabline = tabline,
+            extensions = {}
         })
         vim.api.nvim_set_hl(0, "StatusLine", { link = "lualine_c_normal" })
     end

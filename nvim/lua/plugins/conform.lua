@@ -10,6 +10,7 @@ return {
             typescript = { 'prettierd', 'prettier', stop_after_first = true, },
             typescriptreact = { 'prettierd', 'prettier', stop_after_first = true, },
             cpp = { 'clang-format', },
+            lua = { 'stylua' },
             toml = { 'taplo' },
             ["_"] = { lsp_format = 'fallback' },
         }

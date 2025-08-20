@@ -1,4 +1,3 @@
--- TODO: Is it really needed?
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -33,5 +32,5 @@ return {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
     },
-    enabled = false,
+    enabled = Fancy,
 }

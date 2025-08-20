@@ -17,6 +17,7 @@ vim.o.cursorlineopt = 'number'
 vim.o.ttyfast = true
 vim.o.grepprg = 'rg --vimgrep --smart-case --follow'
 vim.o.formatprg = 'clang-format'
+vim.o.scrolloff = 7
 
 vim.g.mapleader = " "
 vim.g.netrw_liststyle = 3

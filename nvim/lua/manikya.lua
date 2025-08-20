@@ -2,6 +2,9 @@ Servers = { 'clangd', 'pyright', 'typescript-language-server', 'lua-language-ser
     'tailwindcss-language-server', 'oxlint' }
 -- MasonInstall clangd pyright typescript-language-server lua-language-server taplo rust-analyzer tailwindcss-language-server oxlint
 
+-- enable options plugins only for looks
+Fancy = true
+
 require("configure/utils")
 require("configure/options")
 require("lazy-setup")

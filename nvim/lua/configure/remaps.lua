@@ -53,6 +53,7 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
 
 -- inline hints toggle
 vim.keymap.set("n", "<leader>h", function()
@@ -79,7 +80,7 @@ vim.keymap.set('n', '<leader>sm', function()
     if not success then
         vim.notify("Smear not installed", "error", { title = "Config" })
     else
-        vim.notify("Smear toogle", "info", { title = "Config" })
+        vim.notify("Smear toggle", "info", { title = "Config" })
         vim.cmd('SmearCursorToggle')
     end
 end)

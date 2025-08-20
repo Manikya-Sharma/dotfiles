@@ -8,5 +8,6 @@ return {
     opts = {
         render = "wrapped-compact",
         timeout = 2000,
-    }
+    },
+    enabled = Fancy,
 }
