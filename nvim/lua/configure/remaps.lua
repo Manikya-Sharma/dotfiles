@@ -46,7 +46,18 @@ vim.keymap.set("n", "<C-J>", function()
 	vim.cmd("AerialToggle!")
 end)
 vim.keymap.set("n", "<C-M>", function()
-	vim.cmd("Telescope aerial")
+	local success, aerial = pcall(require, "aerial")
+	if not success then
+		vim.notify("Aerial not found", "warn", { title = "Config" })
+		vim.cmd("normal! ^M")
+		return
+	end
+	local num_symbols = aerial.num_symbols(vim.api.nvim_get_current_buf())
+	if num_symbols == 0 then
+		vim.cmd("normal! ^M")
+	else
+		vim.cmd("Telescope aerial")
+	end
 end)
 
 -- undotree
