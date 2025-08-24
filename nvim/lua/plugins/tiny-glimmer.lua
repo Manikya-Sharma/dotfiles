@@ -4,7 +4,6 @@ return {
 	priority = 10,
 	opts = {
 		overwrite = {
-			search = { enabled = true },
 			undo = { enabled = true },
 			redo = { enabled = true },
 		},
