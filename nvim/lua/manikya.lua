@@ -11,7 +11,7 @@ Servers = {
 -- MasonInstall clangd pyright typescript-language-server lua-language-server taplo rust-analyzer tailwindcss-language-server oxlint
 
 -- enable options plugins only for looks
-Fancy = false
+Fancy = true
 
 require("configure/utils")
 require("configure/options")

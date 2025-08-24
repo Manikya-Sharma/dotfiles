@@ -36,11 +36,20 @@ return {
 			dense = true,
 			colored = true,
 		}
-		local tabline = {
+		local winbar = {
 			lualine_a = {},
-			lualine_b = {},
-			lualine_c = { { "buffers", symbols = { alternate_file = "" } } },
-			lualine_x = { aerial, { "tabs", show_modified_status = false } },
+			lualine_b = { "filename" },
+			-- lsp_status will be handled by fidget
+			lualine_c = Fancy and {} or { lsp_status },
+			lualine_x = { aerial },
+			lualine_y = {},
+			lualine_z = {},
+		}
+		local inactive_winbar = {
+			lualine_a = {},
+			lualine_b = { "filename" },
+			lualine_c = {},
+			lualine_x = {},
 			lualine_y = {},
 			lualine_z = {},
 		}
@@ -51,10 +60,10 @@ return {
 				component_separators = { left = " ", right = " " },
 			},
 			sections = {
-				lualine_a = {},
+				lualine_a = { "branch" },
 				lualine_b = {},
-				lualine_c = { "branch", diagnostics },
-				lualine_x = { arrow_status, diff, lsp_status },
+				lualine_c = { { "buffers", symbols = { alternate_file = "" } } },
+				lualine_x = { arrow_status, diff, diagnostics },
 				lualine_y = {},
 				lualine_z = { "location" },
 			},
@@ -62,11 +71,12 @@ return {
 				lualine_a = {},
 				lualine_b = {},
 				lualine_c = {},
-				lualine_x = { diff },
+				lualine_x = { arrow_status, diff },
 				lualine_y = {},
 				lualine_z = {},
 			},
-			tabline = tabline,
+			winbar = winbar,
+			inactive_winbar = inactive_winbar,
 			extensions = {},
 		})
 		vim.api.nvim_set_hl(0, "StatusLine", { link = "lualine_c_normal" })

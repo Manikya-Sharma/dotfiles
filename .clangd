@@ -1,4 +1,8 @@
 CompileFlags:
   Add:
     - -DLOCAL
-
+    - -Wall
+    - -Wshadow
+    - -Wfloat-equal
+    - -Wextra
+    - -O0

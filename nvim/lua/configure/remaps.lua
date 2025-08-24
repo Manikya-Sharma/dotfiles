@@ -15,9 +15,14 @@ vim.keymap.set("n", "<C-K>", function()
 		conform.format()
 	end
 end)
+
+-- file path
 vim.keymap.set("n", "<leader>fp", function()
 	vim.cmd('let @+ = expand("%")')
 	vim.notify("File path copied!", "info", { title = "Config" })
+end)
+vim.keymap.set("n", "<C-G>", function()
+	vim.notify(vim.api.nvim_buf_get_name(0))
 end)
 
 vim.keymap.set("n", "K", function()
