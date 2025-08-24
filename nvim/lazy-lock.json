@@ -1,5 +1,5 @@
 {
-  "aerial.nvim": { "branch": "master", "commit": "b7baffb30af580f342adf6b82aa341942002dbf3" },
+  "aerial.nvim": { "branch": "master", "commit": "62a5a3149b66444a245c052e431c30568ae173e3" },
   "arrow.nvim": { "branch": "master", "commit": "6e0f726f55f99332dd726a53effd6813786b6d49" },
   "blink.cmp": { "branch": "main", "commit": "4e9edba1b1cef1585cc65e54287229e5d34e4df8" },
   "colorful-menu.nvim": { "branch": "master", "commit": "bc3e82609f2fcf7dad7ca87c20e65e51d5d9d87c" },
@@ -28,6 +28,7 @@
   "smear-cursor.nvim": { "branch": "main", "commit": "4b86df8a0c5f46e708616b21a02493bb0e47ecbd" },
   "techbase.nvim": { "branch": "main", "commit": "d92ef0981bb6d358630fcac481f06e25d4127630" },
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
+  "tiny-glimmer.nvim": { "branch": "main", "commit": "60a632536e0741c9cecb892f89fbe65a270dc7c7" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
   "undotree": { "branch": "master", "commit": "28f2f54a34baff90ea6f4a735ef1813ad875c743" }
