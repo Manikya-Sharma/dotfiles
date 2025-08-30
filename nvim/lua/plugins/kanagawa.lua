@@ -10,7 +10,6 @@ return {
 		keywordStyle = { bold = true },
 		typeStyle = { bold = true },
 		dimInactive = true,
-		theme = "dragon",
 		overrides = function(colors)
 			local theme = colors.theme
 			local makeDiagnosticColor = function(color)
