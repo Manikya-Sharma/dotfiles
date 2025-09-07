@@ -16,6 +16,23 @@ vim.keymap.set("n", "<C-K>", function()
 	end
 end)
 
+-- panes
+vim.keymap.set("n", "|", function()
+	vim.cmd("vsplit")
+end)
+
+vim.keymap.set("n", "-", function()
+	vim.cmd("split")
+end)
+
+vim.keymap.set("n", "<M-h>", "<C-W>h")
+vim.keymap.set("n", "<M-j>", "<C-W>j")
+vim.keymap.set("n", "<M-k>", "<C-W>k")
+vim.keymap.set("n", "<M-l>", "<C-W>l")
+vim.keymap.set("n", "<M-s>", function()
+	vim.cmd("q")
+end)
+
 -- file path
 vim.keymap.set("n", "<leader>fp", function()
 	vim.cmd('let @+ = expand("%")')
@@ -50,6 +67,9 @@ vim.keymap.set("n", "<C-L>", "10zl")
 vim.keymap.set("n", "<C-J>", function()
 	vim.cmd("AerialToggle!")
 end)
+vim.keymap.set("n", "\\", function()
+	vim.cmd("AerialToggle! left")
+end)
 vim.keymap.set("n", "<C-M>", function()
 	local success, aerial = pcall(require, "aerial")
 	if not success then
@@ -74,7 +94,7 @@ end)
 vim.keymap.set("n", "<leader> ", function()
 	vim.cmd("Neotree toggle")
 end)
-vim.keymap.set("n", "<leader>'", function()
+vim.keymap.set("n", "<TAB>", function()
 	vim.cmd("Neotree toggle reveal")
 end)
 
