@@ -11,6 +11,11 @@ return {
 		source_selector = {
 			winbar = true,
 		},
+		window = {
+			mappings = {
+				["z"] = "noop",
+			},
+		},
 		sources = { "filesystem", "buffers", "git_status" },
 		default_component_configs = {
 			git_status = {

@@ -32,5 +32,5 @@ return {
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
 	},
-	enabled = Fancy,
+	enabled = false,
 }
