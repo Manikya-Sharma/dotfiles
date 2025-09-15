@@ -9,3 +9,16 @@ if not Fancy then
 		end,
 	})
 end
+
+-- start lsp on entering the buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("lsp", {}),
+	desc = "Enable lsp in the buffer",
+	pattern = "*.*",
+	callback = function()
+		local success, _ = pcall(vim.cmd, "LspStart")
+		if not success then
+			vim.notify("LspStart command could not run", "warn", { title = "Config" })
+		end
+	end,
+})

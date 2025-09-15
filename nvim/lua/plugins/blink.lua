@@ -29,10 +29,10 @@ local icons = {
 return {
 	"saghen/blink.cmp",
 	event = "InsertEnter",
-	init = function()
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		vim.lsp.config("*", capabilities)
-	end,
+	-- init = function()
+	-- 	local capabilities = require("blink.cmp").get_lsp_capabilities()
+	-- 	vim.lsp.config("*", capabilities)
+	-- end,
 	build = "cargo build --release",
 	opts = {
 		appearance = {

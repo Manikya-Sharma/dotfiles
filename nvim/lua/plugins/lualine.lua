@@ -63,7 +63,7 @@ return {
 				lualine_a = { "branch" },
 				lualine_b = {},
 				lualine_c = { { "buffers", symbols = { alternate_file = "" } } },
-				lualine_x = { arrow_status, diff, diagnostics },
+				lualine_x = { lsp_status, arrow_status, diff, diagnostics },
 				lualine_y = {},
 				lualine_z = { "location" },
 			},

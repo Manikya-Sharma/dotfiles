@@ -1,13 +1,14 @@
 Servers = {
 	"clangd",
 	"pyright",
-	"typescript-language-server",
-	"lua-language-server",
+	"ts_ls",
+	"lua_ls",
 	"taplo",
-	"rust-analyzer",
-	"tailwindcss-language-server",
+	"rust_analyzer",
+	"tailwindcss",
 	"oxlint",
 	"gopls",
+	"biome",
 }
 -- MasonInstall clangd pyright typescript-language-server lua-language-server taplo rust-analyzer tailwindcss-language-server oxlint gopls
 
@@ -19,3 +20,4 @@ require("configure/options")
 require("lazy-setup")
 require("configure/lsp")
 require("configure/remaps")
+
