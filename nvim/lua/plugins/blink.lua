@@ -59,8 +59,8 @@ return {
 					components = {
 						label = {
 							text = function(ctx)
-								local success, colorful_menu = pcall(require, "colorful-menu")
-								if not success then
+								local has_colorful_menu, colorful_menu = pcall(require, "colorful-menu")
+								if not has_colorful_menu then
 									vim.notify("colorful-menu not found", "error", { title = "Config" })
 								end
 								return colorful_menu.blink_components_text(ctx)

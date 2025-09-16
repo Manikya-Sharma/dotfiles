@@ -16,8 +16,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "Enable lsp in the buffer",
 	pattern = "*.*",
 	callback = function()
-		local success, _ = pcall(vim.cmd, "LspStart")
-		if not success then
+		local has_lspconfig, _ = pcall(vim.cmd, "LspStart")
+		if not has_lspconfig then
 			vim.notify("LspStart command could not run", "warn", { title = "Config" })
 		end
 	end,

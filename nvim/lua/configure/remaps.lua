@@ -7,8 +7,8 @@ end)
 vim.keymap.set("n", "<C-S>", Bufdelete)
 vim.keymap.set("i", "<C-[>", "<ESC>")
 vim.keymap.set("n", "<C-K>", function()
-	local success, conform = pcall(require, "conform")
-	if not success then
+	local has_conform, conform = pcall(require, "conform")
+	if not has_conform then
 		vim.notify("Conform not found", "warn", { title = "Config" })
 		vim.lsp.buf.format()
 	else
@@ -71,8 +71,8 @@ vim.keymap.set("n", "\\", function()
 	vim.cmd("AerialToggle! left")
 end)
 vim.keymap.set("n", "<C-M>", function()
-	local success, aerial = pcall(require, "aerial")
-	if not success then
+	local has_aerial, aerial = pcall(require, "aerial")
+	if not has_aerial then
 		vim.notify("Aerial not found", "warn", { title = "Config" })
 		vim.cmd("normal! ^M")
 		return
@@ -116,12 +116,15 @@ vim.keymap.set("n", "<leader>gb", function()
 end)
 
 -- -- keymaps for telescope
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
-
+local has_telescope, builtin = pcall(require, "telescope.builtin")
+if not has_telescope then
+	vim.notify("Telescope not installed", "warn", { title = "Config" })
+else
+	vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+	vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+	vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+	vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
+end
 -- inline hints toggle
 vim.keymap.set("n", "<leader>h", function()
 	vim.notify("Toggle inlay hints", "info", { title = "Config" })
@@ -142,8 +145,8 @@ end)
 
 -- smear
 vim.keymap.set("n", "<leader>sm", function()
-	local success = pcall(require, "smear_cursor")
-	if not success then
+	local has_smear = pcall(require, "smear_cursor")
+	if not has_smear then
 		vim.notify("Smear not installed", "error", { title = "Config" })
 	else
 		vim.notify("Smear toggle", "info", { title = "Config" })
