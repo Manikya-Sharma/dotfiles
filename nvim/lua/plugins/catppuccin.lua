@@ -6,15 +6,15 @@ return {
 		vim.cmd.colorscheme("catppuccin")
 	end,
 	opts = {
-		flavour = "latte",
+		flavour = "mocha",
 		auto_integrations = true,
 		show_end_of_buffer = true,
 		dim_inactive = {
 			enabled = true,
 		},
 		styles = {
-			comments = { "italic" },
 			keywords = { "italic" },
+			functions = { "bold", "italic" },
 			types = { "bold" },
 		},
 	},
