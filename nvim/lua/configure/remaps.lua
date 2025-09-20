@@ -12,7 +12,7 @@ vim.keymap.set("n", "<C-K>", function()
 		vim.notify("Conform not found", "warn", { title = "Config" })
 		vim.lsp.buf.format()
 	else
-		conform.format()
+		conform.format({ async = true, lsp_fallback = true })
 	end
 end)
 
