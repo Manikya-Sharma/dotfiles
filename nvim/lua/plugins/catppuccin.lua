@@ -18,4 +18,5 @@ return {
 			types = { "bold" },
 		},
 	},
+	enabled = false,
 }

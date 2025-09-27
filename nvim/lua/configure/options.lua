@@ -18,6 +18,7 @@ vim.o.ttyfast = true
 vim.o.grepprg = "rg --vimgrep --smart-case --follow"
 vim.o.formatprg = "clang-format"
 vim.o.scrolloff = 7
+vim.o.termguicolors = true
 
 vim.g.mapleader = " "
 vim.g.netrw_liststyle = 3

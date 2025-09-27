@@ -35,5 +35,5 @@ return {
 			}
 		end,
 	},
-    enabled = false
+	enabled = false,
 }
