@@ -6,9 +6,14 @@ return {
 			char = "│",
 		},
 		scope = {
-            char = '┆',
-            show_start = false,
-            show_end = false,
+			char = "┆",
+			show_start = false,
+			show_end = false,
+		},
+		exclude = {
+			filetypes = {
+				"dashboard",
+			},
 		},
 	},
 }
