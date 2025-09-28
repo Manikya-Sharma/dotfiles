@@ -6,15 +6,14 @@ vim.keymap.set("n", "<C-N>", function()
 end)
 vim.keymap.set("n", "<C-S>", Bufdelete)
 vim.keymap.set("i", "<C-[>", "<ESC>")
-vim.keymap.set("n", "<C-K>", function()
-	local has_conform, conform = pcall(require, "conform")
-	if not has_conform then
+
+local has_conform, conform = pcall(require, "conform")
+if not has_conform then
+	vim.keymap.set("n", "<C-K>", function()
 		vim.notify("Conform not found", "warn", { title = "Config" })
 		vim.lsp.buf.format()
-	else
-		conform.format({ async = true, lsp_fallback = true })
-	end
-end)
+	end)
+end
 
 -- panes
 vim.keymap.set("n", "|", function()
@@ -51,9 +50,6 @@ end)
 vim.keymap.set("n", "<leader>ca", function()
 	vim.lsp.buf.code_action()
 end)
-vim.keymap.set("n", "<leader>rf", function()
-	vim.cmd("Telescope lsp_references")
-end)
 vim.keymap.set("n", "<leader>rn", ":IncRename ")
 
 -- soft wrap by default
@@ -64,26 +60,23 @@ vim.keymap.set("n", "k", "gk")
 vim.keymap.set("n", "<C-H>", "10zh")
 vim.keymap.set("n", "<C-L>", "10zl")
 
-vim.keymap.set("n", "<C-J>", function()
-	vim.cmd("AerialToggle!")
-end)
-vim.keymap.set("n", "\\", function()
-	vim.cmd("AerialToggle! left")
-end)
-vim.keymap.set("n", "<C-M>", function()
-	local has_aerial, aerial = pcall(require, "aerial")
-	if not has_aerial then
-		vim.notify("Aerial not found", "warn", { title = "Config" })
-		vim.cmd("normal! ^M")
-		return
-	end
-	local num_symbols = aerial.num_symbols(vim.api.nvim_get_current_buf())
-	if num_symbols == 0 then
-		vim.cmd("normal! ^M")
-	else
-		vim.cmd("Telescope aerial")
-	end
-end)
+local has_aerial, aerial = pcall(require, "aerial")
+if has_aerial then
+	vim.keymap.set("n", "<C-J>", function()
+		vim.cmd("AerialToggle!")
+	end)
+	vim.keymap.set("n", "\\", function()
+		vim.cmd("AerialToggle! left")
+	end)
+	vim.keymap.set("n", "<C-M>", function()
+		local num_symbols = aerial.num_symbols(vim.api.nvim_get_current_buf())
+		if num_symbols == 0 then
+			vim.cmd("normal! ^M")
+		else
+			vim.cmd("Telescope aerial")
+		end
+	end)
+end
 
 -- undotree
 vim.keymap.set("n", "<C-Q>", function()
@@ -119,11 +112,17 @@ end)
 local has_telescope, builtin = pcall(require, "telescope.builtin")
 if not has_telescope then
 	vim.notify("Telescope not installed", "warn", { title = "Config" })
+	vim.keymap.set("n", "<leader>rf", function()
+		vim.lsp.buf.references()
+	end)
 else
 	vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 	vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 	vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 	vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
+	vim.keymap.set("n", "<leader>rf", function()
+		vim.cmd("Telescope lsp_references")
+	end)
 end
 -- inline hints toggle
 vim.keymap.set("n", "<leader>h", function()

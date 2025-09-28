@@ -7,4 +7,5 @@ return {
 			},
 		},
 	},
+	cmd = "DiffviewOpen",
 }

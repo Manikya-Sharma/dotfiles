@@ -1,6 +1,16 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
+	keys = {
+		{
+			"<C-K>",
+			function()
+				require("conform").format({ async = true })
+			end,
+			desc = "Format buffer",
+		},
+	},
 	opts = {
 		formatters_by_ft = {
 			python = { "isort", "black" },
