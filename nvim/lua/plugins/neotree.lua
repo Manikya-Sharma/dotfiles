@@ -14,6 +14,7 @@ return {
 		window = {
 			mappings = {
 				["z"] = "noop",
+                ["/"] = "noop"
 			},
 		},
 		sources = { "filesystem", "buffers", "git_status" },

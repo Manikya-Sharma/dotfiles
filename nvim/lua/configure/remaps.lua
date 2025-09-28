@@ -153,3 +153,22 @@ vim.keymap.set("n", "<leader>sm", function()
 		vim.cmd("SmearCursorToggle")
 	end
 end)
+
+-- lensline
+local has_lensline, lensline = pcall(require, "lensline")
+if has_lensline then
+	lensline.disable()
+end
+vim.keymap.set("n", "<leader>ll", function()
+	if not has_lensline then
+		vim.notify("Lensline not installed", "error", { title = "Config" })
+	else
+		vim.notify("Lensline toggle", "info", { title = "Config" })
+		if lensline.is_enabled() then
+			lensline.disable()
+		else
+			lensline.enable()
+			lensline.show()
+		end
+	end
+end)

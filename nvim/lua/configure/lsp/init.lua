@@ -4,9 +4,6 @@ vim.lsp.config("lua_ls", {
 			diagnostics = {
 				globals = { "vim" },
 			},
-			codeLens = {
-				enable = true,
-			},
 		},
 	},
 })

@@ -6,10 +6,10 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-        vim.g.zenbones = {
-            darken_comments = 45,
-            darken_noncurrent_window = true,
-        }
-		vim.cmd.colorscheme("zenbones")
+		vim.g.zenbones = {
+			darken_comments = 45,
+			darken_noncurrent_window = true,
+		}
+		vim.cmd.colorscheme("tokyobones")
 	end,
 }
