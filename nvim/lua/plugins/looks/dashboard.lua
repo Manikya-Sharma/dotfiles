@@ -30,6 +30,7 @@ return {
 			shortcut = {
 				{ desc = "󰒲 Lazy", group = "@property", action = "Lazy", key = "l" },
 				{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
+				{ desc = "󰈆 Quit", group = "@property", action = "q", key = "q" },
 			},
 			footer = {},
 		},

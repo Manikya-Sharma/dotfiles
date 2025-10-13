@@ -23,3 +23,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
+-- start treesitter
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("treesitter-enable", {}),
+	desc = "Enable treesitter in the buffer",
+	pattern = "*",
+	callback = function()
+		vim.treesitter.get_parser(nil, nil, { error = false })
+	end,
+})

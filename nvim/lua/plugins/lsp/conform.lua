@@ -22,6 +22,8 @@ return {
 			cpp = { "clang-format" },
 			lua = { "stylua" },
 			toml = { "taplo" },
+			json = { "biome", "clang-format", stop_after_first = true },
+			astro = { "prettierd", "prettier", stop_after_first = true },
 			["_"] = { lsp_format = "fallback" },
 		},
 	},
