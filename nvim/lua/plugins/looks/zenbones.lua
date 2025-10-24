@@ -12,4 +12,5 @@ return {
 		}
 		vim.cmd.colorscheme("tokyobones")
 	end,
+	enabled = false,
 }

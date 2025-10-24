@@ -24,12 +24,17 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- start treesitter
-
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = vim.api.nvim_create_augroup("treesitter-enable", {}),
 	desc = "Enable treesitter in the buffer",
 	pattern = "*",
 	callback = function()
-		vim.treesitter.get_parser(nil, nil, { error = false })
+		local parser = vim.treesitter.get_parser(nil, nil, { error = false })
+		if parser then
+			local success = pcall(vim.treesitter.start, 0, vim.bo.filetype)
+			if not success then
+				vim.notify("TS could not be enabled", "warn", { title = "Config" })
+			end
+		end
 	end,
 })
