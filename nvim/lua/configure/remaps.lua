@@ -7,7 +7,7 @@ end)
 vim.keymap.set("n", "<C-S>", Bufdelete)
 vim.keymap.set("i", "<C-[>", "<ESC>")
 
-local has_conform, conform = pcall(require, "conform")
+local has_conform = pcall(require, "conform")
 if not has_conform then
 	vim.keymap.set("n", "<C-K>", function()
 		vim.notify("Conform not found", "warn", { title = "Config" })
@@ -60,7 +60,7 @@ vim.keymap.set("n", "k", "gk")
 vim.keymap.set("n", "<C-H>", "10zh")
 vim.keymap.set("n", "<C-L>", "10zl")
 
-local has_aerial, aerial = pcall(require, "aerial")
+local has_aerial = pcall(require, "aerial")
 if has_aerial then
 	vim.keymap.set("n", "<C-J>", function()
 		vim.cmd("AerialToggle!")
@@ -68,15 +68,21 @@ if has_aerial then
 	vim.keymap.set("n", "\\", function()
 		vim.cmd("AerialToggle! left")
 	end)
-	vim.keymap.set("n", "<C-M>", function()
-		local num_symbols = aerial.num_symbols(vim.api.nvim_get_current_buf())
-		if num_symbols == 0 then
-			vim.cmd("normal! ^M")
-		else
-			vim.cmd("Telescope aerial")
-		end
-	end)
 end
+
+vim.keymap.set("n", "<C-M>", function()
+	local clients = vim.lsp.buf_get_clients(0)
+	local empty = true
+	for _ in pairs(clients) do
+		empty = false
+		break
+	end
+	if empty then
+		vim.cmd("normal! ^M")
+	else
+		vim.cmd("FzfLua lsp_document_symbols")
+	end
+end)
 
 -- undotree
 vim.keymap.set("n", "<C-Q>", function()
@@ -108,22 +114,23 @@ vim.keymap.set("n", "<leader>gb", function()
 	vim.cmd("Gitsigns blame")
 end)
 
--- -- keymaps for telescope
-local has_telescope, builtin = pcall(require, "telescope.builtin")
-if not has_telescope then
-	vim.notify("Telescope not installed", "warn", { title = "Config" })
-	vim.keymap.set("n", "<leader>rf", function()
-		vim.lsp.buf.references()
-	end)
-else
-	vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-	vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-	vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-	vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
-	vim.keymap.set("n", "<leader>rf", function()
-		vim.cmd("Telescope lsp_references")
-	end)
-end
+-- FzfLua
+vim.keymap.set("n", "<leader>ff", function()
+	vim.cmd("FzfLua files")
+end)
+vim.keymap.set("n", "<leader>fg", function()
+	vim.cmd("FzfLua live_grep")
+end, {})
+vim.keymap.set("n", "<leader>fb", function()
+	vim.cmd("FzfLua buffers")
+end, {})
+vim.keymap.set("n", "<leader>ft", function()
+	vim.cmd("FzfLua diagnostics_document")
+end, {})
+vim.keymap.set("n", "<leader>rf", function()
+	vim.cmd("FzfLua lsp_references")
+end)
+
 -- inline hints toggle
 vim.keymap.set("n", "<leader>h", function()
 	vim.notify("Toggle inlay hints", "info", { title = "Config" })
