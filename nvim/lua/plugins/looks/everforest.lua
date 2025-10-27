@@ -11,4 +11,5 @@ return {
 		vim.g.everforest_transparent_background = true
 		vim.cmd("colorscheme everforest")
 	end,
+	enabled = false,
 }

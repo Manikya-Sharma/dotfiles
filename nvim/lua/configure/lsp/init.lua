@@ -7,4 +7,8 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-vim.diagnostic.config({ virtual_text = true })
+
+local inline_diag = pcall(require, "tiny-inline-diagnostic")
+if not inline_diag then
+	vim.diagnostic.config({ virtual_text = true })
+end
