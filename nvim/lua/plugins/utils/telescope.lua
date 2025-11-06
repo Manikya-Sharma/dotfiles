@@ -20,4 +20,6 @@ return {
 		})
 		require("telescope").load_extension("fzf")
 	end,
+	-- replaced with fzf-lua, re-enable if some integration needed
+	enabled = false,
 }
