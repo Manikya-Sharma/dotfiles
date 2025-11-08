@@ -39,8 +39,7 @@ return {
 		local winbar = {
 			lualine_a = {},
 			lualine_b = { "filename" },
-			-- lsp_status will be handled by fidget
-			lualine_c = Fancy and {} or { lsp_status },
+			lualine_c = {},
 			lualine_x = { aerial },
 			lualine_y = {},
 			lualine_z = {},
