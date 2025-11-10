@@ -11,5 +11,5 @@ return {
 		distance_stop_animating = 0.3,
 		filetypes_disabled = { "dat" },
 	},
-	enabled = Fancy,
+	enabled = false,
 }
