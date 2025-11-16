@@ -6,7 +6,7 @@ return {
 		},
 		scope = {
 			char = "│",
-			highlights = { "BlinkIndentScope" },
+			-- highlights = { "BlinkIndentScope" },
 		},
 	},
 }

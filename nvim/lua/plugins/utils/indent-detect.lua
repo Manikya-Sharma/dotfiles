@@ -1,4 +1,6 @@
 return {
 	"NMAC427/guess-indent.nvim",
-	opts = {},
+	opts = {
+		auto_cmd = true,
+	},
 }
