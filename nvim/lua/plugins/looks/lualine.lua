@@ -7,7 +7,7 @@ return {
 		local has_arrow, statusline = pcall(require, "arrow.statusline")
 		local function arrow_status()
 			if not has_arrow then
-				vim.notify("Arrow not found", "error", { title = "Config" })
+				vim.notify("Arrow not found", vim.log.levels.ERROR, { title = "Config" })
 				return {}
 			end
 			return statusline.text_for_statusline_with_icons()

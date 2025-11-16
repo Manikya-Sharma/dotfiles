@@ -16,9 +16,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "Enable lsp in the buffer",
 	pattern = "*.*",
 	callback = function()
-		local has_lspconfig, _ = pcall(vim.cmd, "LspStart")
+		local has_lspconfig, _ = pcall(function()
+			vim.cmd("LspStart")
+		end)
 		if not has_lspconfig then
-			vim.notify("LspStart command could not run", "warn", { title = "Config" })
+			vim.notify("LspStart command could not run", vim.log.levels.WARN, { title = "Config" })
 		end
 	end,
 })
@@ -32,7 +34,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		local parser = vim.treesitter.get_parser(nil, nil, { error = false })
 		local success = pcall(vim.treesitter.start)
 		if parser and not success then
-			vim.notify("TS could not be enabled", "warn", { title = "Config" })
+			vim.notify("TS could not be enabled", vim.log.levels.WARN, { title = "Config" })
 		end
 	end,
 })

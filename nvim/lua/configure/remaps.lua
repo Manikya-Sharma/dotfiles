@@ -10,7 +10,7 @@ vim.keymap.set("i", "<C-[>", "<ESC>")
 local has_conform = pcall(require, "conform")
 if not has_conform then
 	vim.keymap.set("n", "<C-K>", function()
-		vim.notify("Conform not found", "warn", { title = "Config" })
+		vim.notify("Conform not found", vim.log.levels.WARN, { title = "Config" })
 		vim.lsp.buf.format()
 	end)
 end
@@ -35,7 +35,7 @@ end)
 -- file path
 vim.keymap.set("n", "<leader>fp", function()
 	vim.cmd('let @+ = expand("%")')
-	vim.notify("File path copied!", "info", { title = "Config" })
+	vim.notify("File path copied!", vim.log.levels.INFO, { title = "Config" })
 end)
 vim.keymap.set("n", "<C-G>", function()
 	vim.notify(vim.api.nvim_buf_get_name(0))
@@ -71,7 +71,7 @@ if has_aerial then
 end
 
 vim.keymap.set("n", "<C-M>", function()
-	local clients = vim.lsp.buf_get_clients(0)
+	local clients = vim.lsp.get_clients({ buffer = 0 })
 	local empty = true
 	for _ in pairs(clients) do
 		empty = false
@@ -133,7 +133,7 @@ end)
 
 -- inline hints toggle
 vim.keymap.set("n", "<leader>h", function()
-	vim.notify("Toggle inlay hints", "info", { title = "Config" })
+	vim.notify("Toggle inlay hints", vim.log.levels.INFO, { title = "Config" })
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end)
 
@@ -141,10 +141,10 @@ end)
 vim.keymap.set("n", "<leader>cc", function()
 	local exists = vim.o.cursorcolumn
 	if exists then
-		vim.notify("Unset cursorcolumn", "info", { title = "Config" })
+		vim.notify("Unset cursorcolumn", vim.log.levels.INFO, { title = "Config" })
 		vim.cmd("set nocursorcolumn")
 	else
-		vim.notify("Set cursorcolumn", "info", { title = "Config" })
+		vim.notify("Set cursorcolumn", vim.log.levels.INFO, { title = "Config" })
 		vim.cmd("set cursorcolumn")
 	end
 end)
@@ -153,9 +153,9 @@ end)
 vim.keymap.set("n", "<leader>sm", function()
 	local has_smear = pcall(require, "smear_cursor")
 	if not has_smear then
-		vim.notify("Smear not installed", "error", { title = "Config" })
+		vim.notify("Smear not installed", vim.log.levels.ERROR, { title = "Config" })
 	else
-		vim.notify("Smear toggle", "info", { title = "Config" })
+		vim.notify("Smear toggle", vim.log.levels.INFO, { title = "Config" })
 		vim.cmd("SmearCursorToggle")
 	end
 end)
@@ -167,9 +167,9 @@ if has_lensline then
 end
 vim.keymap.set("n", "<leader>ll", function()
 	if not has_lensline then
-		vim.notify("Lensline not installed", "error", { title = "Config" })
+		vim.notify("Lensline not installed", vim.log.levels.ERROR, { title = "Config" })
 	else
-		vim.notify("Lensline toggle", "info", { title = "Config" })
+		vim.notify("Lensline toggle", vim.log.levels.INFO, { title = "Config" })
 		if lensline.is_enabled() then
 			lensline.disable()
 		else

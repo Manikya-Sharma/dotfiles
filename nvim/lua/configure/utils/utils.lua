@@ -26,7 +26,9 @@ function Bufdelete()
 				end
 
 				-- Try using previous buffer
-				local has_previous = pcall(vim.cmd, "bprevious")
+				local has_previous = pcall(function()
+					vim.cmd("bprevious")
+				end)
 				if has_previous and buf ~= vim.api.nvim_win_get_buf(win) then
 					return
 				end
@@ -37,7 +39,9 @@ function Bufdelete()
 			end)
 		end
 		if vim.api.nvim_buf_is_valid(buf) then
-			pcall(vim.cmd, "bdelete! " .. buf)
+			pcall(function()
+				vim.cmd("bdelete! " .. buf)
+			end)
 		end
 	end)
 end
