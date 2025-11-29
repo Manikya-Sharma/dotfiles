@@ -99,12 +99,12 @@ return {
 				end,
 			},
 		},
-		-- signature = {
-		-- 	enabled = true,
-		-- 	window = {
-		-- 		border = "single",
-		-- 	},
-		-- },
+		signature = {
+			enabled = true,
+			window = {
+				border = "single",
+			},
+		},
 	},
 	opts_extend = { "sources.default" },
 }

@@ -50,6 +50,9 @@ end)
 vim.keymap.set("n", "<leader>ca", function()
 	vim.lsp.buf.code_action()
 end)
+vim.keymap.set("n", "<leader>cl", function()
+	vim.lsp.codelens.run()
+end)
 vim.keymap.set("n", "<leader>rn", ":IncRename ")
 
 -- soft wrap by default
