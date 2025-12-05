@@ -5,5 +5,5 @@ return {
 	init = function()
 		vim.cmd("colorscheme oxocarbon")
 	end,
-	enabled = false,
+	-- enabled = false,
 }
