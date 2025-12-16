@@ -39,7 +39,7 @@ return {
 		local winbar = {
 			lualine_a = {},
 			lualine_b = { "filename" },
-			lualine_c = {},
+			lualine_c = { "progress" },
 			lualine_x = { aerial },
 			lualine_y = {},
 			lualine_z = {},

@@ -2,7 +2,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
-		branch = "main",
 		build = ":TSUpdate",
 	},
 	-- use until vim.lsp.buf.selection_range is stabilized
