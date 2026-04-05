@@ -7,13 +7,15 @@ end)
 vim.keymap.set("n", "<C-S>", Bufdelete)
 vim.keymap.set("i", "<C-[>", "<ESC>")
 
-local has_conform = pcall(require, "conform")
-if not has_conform then
-	vim.keymap.set("n", "<C-K>", function()
+local has_conform, conform = pcall(require, "conform")
+vim.keymap.set("n", "<C-K>", function()
+	if not has_conform then
 		vim.notify("Conform not found", vim.log.levels.WARN, { title = "Config" })
 		vim.lsp.buf.format()
-	end)
-end
+	else
+		conform.format({ async = true })
+	end
+end)
 
 -- panes
 vim.keymap.set("n", "|", function()

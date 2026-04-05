@@ -80,4 +80,5 @@ return {
 		})
 		vim.api.nvim_set_hl(0, "StatusLine", { link = "lualine_c_normal" })
 	end,
+	enabled = false,
 }
