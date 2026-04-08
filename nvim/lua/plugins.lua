@@ -81,7 +81,7 @@ vim.pack.add({
 	-- -- blink
 	{
 		src = gh("saghen/blink.cmp"),
-		version = vim.version.range("1.0"),
+		version = vim.version.range("*"),
 	},
 	-- plugins to blink
 	{
