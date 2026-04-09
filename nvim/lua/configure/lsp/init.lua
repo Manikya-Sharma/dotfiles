@@ -4,6 +4,13 @@ vim.lsp.config("lua_ls", {
 			diagnostics = {
 				globals = { "vim" },
 			},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+				},
+			},
+			telemetry = { enable = false },
 		},
 	},
 })
