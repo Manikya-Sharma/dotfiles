@@ -107,6 +107,11 @@ vim.pack.add({
 	{
 		src = gh("smjonas/inc-rename.nvim"),
 	},
+
+	-- statusline
+	{
+		src = gh("nvim-lualine/lualine.nvim"),
+	},
 })
 
 require("plugins/neo-tree")
@@ -121,6 +126,7 @@ require("plugins/blink")
 require("plugins/aerial")
 require("plugins/conform")
 require("plugins/trouble")
+require("plugins/lualine")
 
 require("todo-comments").setup()
 require("mason").setup()
