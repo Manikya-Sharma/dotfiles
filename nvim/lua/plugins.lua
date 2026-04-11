@@ -112,6 +112,12 @@ vim.pack.add({
 	{
 		src = gh("nvim-lualine/lualine.nvim"),
 	},
+
+	-- themes
+	-- kanagawa
+	{
+		src = gh("rebelot/kanagawa.nvim"),
+	},
 })
 
 require("plugins/neo-tree")
@@ -127,6 +133,7 @@ require("plugins/aerial")
 require("plugins/conform")
 require("plugins/trouble")
 require("plugins/lualine")
+require("plugins/kanagawa")
 
 require("todo-comments").setup()
 require("mason").setup()

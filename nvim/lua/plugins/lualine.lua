@@ -1,19 +1,19 @@
 -- ref: https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 local lualine = require("lualine")
 
--- Color table for highlights
+--Color table for highlights -> Kanagawa
 local colors = {
-	bg = "#202328",
-	fg = "#bbc2cf",
-	yellow = "#ECBE7B",
-	cyan = "#008080",
-	darkblue = "#081633",
-	green = "#98be65",
-	orange = "#FF8800",
-	violet = "#a9a1e1",
-	magenta = "#c678dd",
-	blue = "#51afef",
-	red = "#ec5f67",
+	bg = "#16161D",
+	fg = "#C8C093",
+	yellow = "#FF9E3B",
+	cyan = "#7E9CD8",
+	darkblue = "#223249",
+	green = "#76946A",
+	orange = "#FF5D62",
+	violet = "#957FB8",
+	magenta = "#938AA9",
+	blue = "#7AA89F",
+	red = "#E82424",
 }
 
 local conditions = {
@@ -30,7 +30,6 @@ local conditions = {
 	end,
 }
 
--- Config
 local config = {
 	options = {
 		-- Disable sections and component separators
@@ -98,11 +97,10 @@ ins_left({
 		}
 		return { fg = mode_color[vim.fn.mode()], gui = "bold" }
 	end,
-	padding = { left = 0, right = 1 }, -- We don't need space before this
+	padding = { left = 0, right = 1 },
 })
 
 ins_left({
-	-- mode component
 	"branch",
 	icon = "",
 	padding = { right = 1 },
@@ -176,5 +174,4 @@ ins_right({
 	padding = { left = 1 },
 })
 
--- Now don't forget to initialize lualine
 lualine.setup(config)
