@@ -26,14 +26,6 @@ vim.keymap.set("n", "-", function()
 	vim.cmd("split")
 end)
 
-vim.keymap.set("n", "<M-h>", "<C-W>h")
-vim.keymap.set("n", "<M-j>", "<C-W>j")
-vim.keymap.set("n", "<M-k>", "<C-W>k")
-vim.keymap.set("n", "<M-l>", "<C-W>l")
-vim.keymap.set("n", "<M-s>", function()
-	vim.cmd("q")
-end)
-
 -- file path
 vim.keymap.set("n", "<leader>fp", function()
 	vim.cmd('let @+ = expand("%")')
@@ -75,18 +67,8 @@ if has_aerial then
 	end)
 end
 
-vim.keymap.set("n", "<C-M>", function()
-	local clients = vim.lsp.get_clients({ buffer = 0 })
-	local empty = true
-	for _ in pairs(clients) do
-		empty = false
-		break
-	end
-	if empty then
-		vim.cmd("normal! ^M")
-	else
-		vim.cmd("FzfLua lsp_document_symbols")
-	end
+vim.keymap.set("n", "<leader>ll", function()
+	vim.cmd("FzfLua lsp_document_symbols")
 end)
 
 -- undotree
@@ -95,10 +77,6 @@ vim.keymap.set("n", "<C-Q>", function()
 	vim.cmd("Undotree")
 end)
 
--- neotree
-vim.keymap.set("n", "<leader> ", function()
-	vim.cmd("Neotree toggle")
-end)
 vim.keymap.set("n", "<TAB>", function()
 	vim.cmd("Neotree toggle reveal")
 end)
@@ -166,21 +144,16 @@ vim.keymap.set("n", "<leader>sm", function()
 	end
 end)
 
--- lensline
-local has_lensline, lensline = pcall(require, "lensline")
-if has_lensline then
-	lensline.disable()
-end
-vim.keymap.set("n", "<leader>ll", function()
-	if not has_lensline then
-		vim.notify("Lensline not installed", vim.log.levels.ERROR, { title = "Config" })
-	else
-		vim.notify("Lensline toggle", vim.log.levels.INFO, { title = "Config" })
-		if lensline.is_enabled() then
-			lensline.disable()
-		else
-			lensline.enable()
-			lensline.show()
-		end
-	end
+-- incremental selection
+vim.keymap.set("n", "<M-O>", function()
+	vim.cmd("normal! van")
+end)
+vim.keymap.set("n", "<M-I>", function()
+	vim.cmd("normal! vin")
+end)
+vim.keymap.set("v", "<M-O>", function()
+	vim.cmd("normal! an")
+end)
+vim.keymap.set("v", "<M-I>", function()
+	vim.cmd("normal! in")
 end)

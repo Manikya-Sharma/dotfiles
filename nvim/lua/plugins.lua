@@ -103,17 +103,17 @@ vim.pack.add({
 		src = gh("folke/trouble.nvim"),
 	},
 
-	-- incremental rename
+	-- -- incremental rename
 	{
 		src = gh("smjonas/inc-rename.nvim"),
 	},
 
-	-- statusline
+	-- -- statusline
 	{
 		src = gh("nvim-lualine/lualine.nvim"),
 	},
 
-	-- themes
+	-- -- themes
 	-- kanagawa
 	{
 		src = gh("rebelot/kanagawa.nvim"),
